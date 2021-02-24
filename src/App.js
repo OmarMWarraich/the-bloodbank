@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import * as mat from 'material-ui';
+import { Link } from 'react-router';
+import DrawerSimpleExample from './Components/Drawer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <mat.AppBar
+          title="Blood Bank"
+          iconElementRight={<div>
+                <Link to="/signup"><mat.FlatButton label="SignUp" /></Link>
+                <Link to="/login"><mat.FlatButton label="Login" /></Link>
+              </div>}
+          iconElementLeft={
+            <DrawerSimpleExample/>
+          }
+
+        />
+          {this.props.children}
+      </div>
+
+    );
+  }
 }
 
 export default App;
